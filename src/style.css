@@ -1,3 +1,18 @@
-body {
-  background-color: #fdd;
+.ChoiceRow .img-top {
+  position: absolute;
+  width: 70%;
+  z-index: 1;
+  transform: translate(30%, -20%);
+}
+.ChoiceRow .img-bottom {
+  position: absolute;
+  width: 70%;
+  z-index: 1;
+  transform: translate(30%, -80%);
+}
+.show {
+  display: inline-block;
+}
+.hide {
+  display: none;
 }
