@@ -1,6 +1,6 @@
-export default function mousEventBosch() {
+export default function mousEventBoschQ5() {
     let choiceRow;
-    choiceRow = document.querySelectorAll("tbody tr .c1");
+    choiceRow = document.querySelectorAll(".CarouselCardTextContainer .CarouselCardText");
 
     let imageSelectionControl = (img, elemPos)=>{
         switch (elemPos) {
@@ -19,33 +19,36 @@ export default function mousEventBosch() {
             case 9:
               img.src = "https://boschpt.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_9ttwNZQw7wZXCke";
               img.title = "B2Blog";
-              img.classList.remove('img-top');
-              img.classList.add('img-bottom');
+              img.classList.remove('q5-img-top');
+              img.classList.add('q5-img-bottom');
               break;
             case 10:
               img.src = "https://boschpt.eu.qualtrics.com/ControlPanel/Graphic.php?IM=IM_eLKOW5vR2SA3vlY";
               img.title = "Downloads Documents";
-              img.classList.remove('img-top');
-              img.classList.add('img-bottom');
+              img.classList.remove('q5-img-top');
+              img.classList.add('q5-img-bottom');
               break;
           
           }
     }
 
     const createImages = (elem) => {
-        let elemPosition = Number(elem.id.split("~").slice(2).join());
+        let elemPosition = Number(elem.id.split("~").slice(2).shift());
         let img = document.createElement("img");
-        img.className = "img-top";
+        img.className = "q5-img-top";
         imageSelectionControl(img, elemPosition);
 
         elem.addEventListener("mouseout", () => {
             img.classList.remove('show');
             img.classList.add('hide');
         })
-        choiceRow[elemPosition].insertBefore(img, choiceRow[elemPosition][elemPosition]);
+        if(elemPosition){
+          choiceRow[elemPosition].insertBefore(img, choiceRow[elemPosition][elemPosition]);
+
+        }
     }
 
-    for (let index = 0; index < document.querySelectorAll(".ChoiceRow .table-cell span").length; index++) {
+    for (let index = 0; index <choiceRow.length; index++) {
         choiceRow[index].addEventListener("mousemove", function (e) {
             createImages(this)
         })

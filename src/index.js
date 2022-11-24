@@ -1,3 +1,3 @@
-import mousEventBosch from "./mousEventBosch.js";
+import mousEventBoschQ5 from "./mousEventBoschQ5.js";
 
-window.mousEventBosch = mousEventBosch;
+window.mousEventBoschQ5 = mousEventBoschQ5;
