@@ -1,3 +1,3 @@
-import mousEventBoschQ5 from "./mousEventBoschQ5.js";
+import imageTooltip from "./imageTooltip.js";
 
-window.mousEventBoschQ5 = mousEventBoschQ5;
+window.imageTooltip = imageTooltip;
