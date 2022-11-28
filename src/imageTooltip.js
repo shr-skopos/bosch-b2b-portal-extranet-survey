@@ -5,7 +5,7 @@ export default function imageTooltip(items) {
     const element = document.getElementById(item.id).parentElement;
 
     // desktop
-    element.addEventListener('mouseover', () => {showTooltip(item.imageURL, item.title, "desktop")});
+    element.addEventListener('mousemove', () => {showTooltip(item.imageURL, item.title, "desktop")});
     element.addEventListener('mouseout', () => {hideTooltip()});
 
     // mobile
@@ -13,6 +13,7 @@ export default function imageTooltip(items) {
   });
   
   const showTooltip = (imageURL, title, device) => {
+    console.log("go");
     const isMobile = window.matchMedia("only screen and (max-width: 600px)").matches;
 
     if (isMobile && device === "desktop") return;
@@ -51,7 +52,7 @@ export default function imageTooltip(items) {
         const mousePositionX = window.event.clientX;
         const mousePositionY = window.event.clientY;
 
-        tooltip.style.left = mousePositionX + "px";
+        tooltip.style.left = mousePositionX + 40 + "px";
         tooltip.style.top = mousePositionY - 200 + "px";
         tooltip.style.maxWidth = "500px";
       } else if (device === "mobile") {
