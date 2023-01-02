@@ -13,7 +13,6 @@ export default function imageTooltip(items) {
   });
   
   const showTooltip = (imageURL, title, device) => {
-    console.log("go");
     const isMobile = window.matchMedia("only screen and (max-width: 600px)").matches;
 
     if (isMobile && device === "desktop") return;
