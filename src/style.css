@@ -1,3 +1,4 @@
+/*imageTooltip*/
 .q5-img-top {
   position: absolute;
   width: 70%;
@@ -10,6 +11,11 @@
   z-index: 1;
   transform: translate(30%, -80%);
 }
+
+/*textTooltip*/
+
+
+/*general*/
 .show {
   display: inline-block;
 }
