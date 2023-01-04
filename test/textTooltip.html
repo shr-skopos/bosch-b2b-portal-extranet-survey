@@ -57,15 +57,26 @@
                             <legend>
                               <div class="QuestionText BorderColor">Wie interessant finden Sie das Konzept Functions on
                                 Demand <span class="underlined">generell</span>?<br>
-                                <div style="line-height: 1em;"><span class="normal" style="font-size:13px;">Hier nochmal
+                                <div style="line-height: 1em;"><span id="tooltip" class="normal" style="font-size:13px;">Hier nochmal
                                     die Beschreibung:</span></div>
-                                <div style="line-height: 1em;"><span class="normal" style="font-size:13px;">Im Gegensatz
+                                <div style="line-height: 1em;"><span id="tooltip-content" class="normal" style="font-size:13px;">Im Gegensatz
                                     zur Zusatzausstattung, die Sie direkt beim Fahrzeugkauf erwerben können, werden
                                     Functions on Demand nach dem Fahrzeugkauf hinzugebucht. Die Buchung ist entweder
                                     monatlich oder dauerhaft möglich. Nutzen Sie die monatliche Buchung, bekommen Sie
                                     die Funktion in den ersten 3 Monaten kostenlos zum Testen und können danach
                                     entscheiden, ob Sie diese weiternutzen möchten. Kauf und Aktivierung der Functions
                                     on Demand erfolgt online, sodass Sie nicht in die Werkstatt müssen.</span></div>
+                              </div>
+
+                              <div style="line-height: 1em;"><span id="tooltip-2" class="normal" style="font-size:13px;">Hier nochmal
+                                die Beschreibung:</span></div>
+                              <div style="line-height: 1em;"><span id="tooltip-2-content" class="normal" style="font-size:13px;">Im Gegensatz
+                                zur Zusatzausstattung, die Sie direkt beim Fahrzeugkauf erwerben können, werden
+                                Functions on Demand nach dem Fahrzeugkauf hinzugebucht. Die Buchung ist entweder
+                                monatlich oder dauerhaft möglich. Nutzen Sie die monatliche Buchung, bekommen Sie
+                                die Funktion in den ersten 3 Monaten kostenlos zum Testen und können danach
+                                entscheiden, ob Sie diese weiternutzen möchten. Kauf und Aktivierung der Functions
+                                on Demand erfolgt online, sodass Sie nicht in die Werkstatt müssen.</span></div>
                               </div>
                             </legend>
                      
@@ -3084,7 +3095,14 @@
   <script type="module" src="../src/index.js"></script>
   <script>
     window.addEventListener('load', (event) => {
-      window.textTooltip();
+      window.textTooltip([
+          {
+            "id": "tooltip"
+          } ,
+          {
+            "id": "tooltip-2"
+          }
+        ]);
     });
   </script>
 </body>
