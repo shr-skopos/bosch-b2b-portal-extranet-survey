@@ -1,33 +1,25 @@
-export default function textTooltip() {
+export default function textTooltip(items) {
     let tooltip;
 
-    const QUESTIONTEXT = document.querySelector("#QID25 .QuestionText");
-    const QUESTIONTEXTCHILD2 = QUESTIONTEXT.children[2];
-    const QUESTIONTEXTCHILD3 = QUESTIONTEXT.children[3];
-console.log(window.innerWidth)
-    QUESTIONTEXTCHILD3.remove();
+    items.forEach((item) => {
+        const element = document.getElementById(item.id);
+        const content = document.getElementById(item.id + '-content');
 
-    const createQuesttionButton = () => {
-        let questionTextContent = QUESTIONTEXTCHILD2.firstChild.textContent;
-        QUESTIONTEXTCHILD2.firstChild.remove();
+        if (content) {
+            const html = content.innerHTML;
 
-        let questionButton = createEl("button", questionTextContent);
-        questionButton.classList.add("questionButton");
-        questionButton.setAttribute("type", "button");
-        QUESTIONTEXTCHILD2.appendChild(questionButton);
-    }
-    createQuesttionButton();
-    
-    
+            // desktop
+            element.addEventListener('mousemove', () => {showTooltip(html, "desktop")});
+            element.addEventListener('mouseout', () => {hideTooltip()});
+        
+            // mobile
+            element.addEventListener('click', () => {showTooltip(html, "mobile")});
+            
+            content.remove();
+        }
+      });
 
-    // desktop
-    QUESTIONTEXTCHILD2.addEventListener('mousemove', () => { showTooltip(QUESTIONTEXTCHILD3.textContent, "desktop") });
-    QUESTIONTEXTCHILD2.addEventListener('mouseout', () => { hideTooltip() });
-     // mobile
-    QUESTIONTEXTCHILD2.addEventListener('click', () => { showTooltip(QUESTIONTEXTCHILD3.textContent, "mobile") });
-   
-
-    const showTooltip = (title, device) => {
+    const showTooltip = (html, device) => {
         const isMobile = window.matchMedia("only screen and (max-width: 600px)").matches;
 
         if (isMobile && device === "desktop") return;
@@ -49,12 +41,9 @@ console.log(window.innerWidth)
             tooltipHeader.style.display = "flex";
             tooltipHeader.style.justifyContent = "space-between";
 
-            const tooltipTitle = document.createElement("h4");
-            tooltipTitle.style.fontFamily = '"Helvetica Neue",Arial,sans-serif'
-            tooltipTitle.style.margin = "1em 0";
-            tooltipTitle.textContent = title;
-            tooltipHeader.appendChild(tooltipTitle);
-
+            const tooltipBody = document.createElement('div');
+            tooltipBody.innerHTML = html;
+            
             const body = document.querySelector("body");
 
             // position tooltip
@@ -83,6 +72,7 @@ console.log(window.innerWidth)
             }
 
             tooltip.appendChild(tooltipHeader);
+            tooltip.appendChild(tooltipBody);
             body.appendChild(tooltip);
         }
 
