@@ -11,10 +11,15 @@
   z-index: 1;
   transform: translate(30%, -80%);
 }
-
 /*textTooltip*/
-
-
+span[id^="tooltip"]:hover {
+  background-color: #e7e9eb;
+  cursor: pointer;
+}
+.closeIcon {
+  color: aqua;
+  display: flex;
+}
 /*general*/
 .show {
   display: inline-block;
