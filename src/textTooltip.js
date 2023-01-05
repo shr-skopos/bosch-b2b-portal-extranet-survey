@@ -1,6 +1,5 @@
 export default function textTooltip(items) {
     let tooltip;
-
     items.forEach((item) => {
         const element = document.getElementById(item.id);
         const content = document.getElementById(item.id + '-content');
@@ -9,15 +8,14 @@ export default function textTooltip(items) {
             const html = content.innerHTML;
 
             // desktop
-            element.addEventListener('mousemove', () => {showTooltip(html, "desktop")});
-            element.addEventListener('mouseout', () => {hideTooltip()});
-        
+            element.addEventListener('mousemove', () => { showTooltip(html, "desktop") });
+            element.addEventListener('mouseout', () => { hideTooltip() });
+
             // mobile
-            element.addEventListener('click', () => {showTooltip(html, "mobile")});
-            
+            element.addEventListener('click', () => { showTooltip(html, "mobile") });
             content.remove();
         }
-      });
+    });
 
     const showTooltip = (html, device) => {
         const isMobile = window.matchMedia("only screen and (max-width: 600px)").matches;
@@ -40,21 +38,21 @@ export default function textTooltip(items) {
             const tooltipHeader = document.createElement('div');
             tooltipHeader.style.display = "flex";
             tooltipHeader.style.justifyContent = "space-between";
+            tooltipHeader.style.flexDirection = "row-reverse";
 
             const tooltipBody = document.createElement('div');
             tooltipBody.innerHTML = html;
-            
+
             const body = document.querySelector("body");
 
             // position tooltip
             if (device === "desktop") {
                 const mousePositionX = window.event.clientX;
                 const mousePositionY = window.event.clientY;
-
                 tooltip.style.left = mousePositionX + 40 + "px";
-                tooltip.style.top = mousePositionY - 200 + "px";
+                tooltip.style.top = mousePositionY + 20 + "px";
                 tooltip.style.maxWidth = "500px";
-                
+
             } else if (device === "mobile") {
                 tooltip.style.marginTop = "20px";
                 tooltip.style.left = "0px";
@@ -86,27 +84,5 @@ export default function textTooltip(items) {
             body.removeChild(tooltip);
         }
     };
-    function createEl(tag, txt) {
-        let el = document.createElement(tag);
-        if (txt) {
-            txt = document.createTextNode(txt);
-            el.appendChild(txt);
-        }
-        return el;
-    }
-
 
 }
-
-// P_1672761558925
-
-
-// #Page .Skin #SkinContent      #Questions .QuestionOuter 
-
-// + #QID22   +QID25
-
-// #desktop-container
-// #mobile-container
-
-
-// .QuestionBody
