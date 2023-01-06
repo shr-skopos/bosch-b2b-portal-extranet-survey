@@ -33,7 +33,7 @@ export default function textTooltip(items) {
 
             tooltip.style.boxShadow = "1px 1px 20px 2px grey";
             tooltip.style.padding = "20px";
-            tooltip.style.position = "absolute";
+            tooltip.style.position = "fixed";
 
             const tooltipHeader = document.createElement('div');
             tooltipHeader.style.display = "flex";
